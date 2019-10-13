@@ -1,0 +1,53 @@
+<h2>list of my Food</h2>
+
+
+
+<div class="fil">
+
+  <div class="filter-container">
+    <a class="filter-item" href="/my-map"> <button class="btn-filter" type="submit">
+        see list on map
+      </button></a>
+    {{#if user}}
+    {{#if restaurantList}}
+
+    <a class="filter-item" href="/onlyNew"><button class="btn-filter" type="submit">not yet</button></a> <br>
+    <a class="filter-item" href="/already"><button class="btn-filter" type="submit"> tried</button></a> <br>
+    <a class="filter-item" href="/list"><button class="btn-filter" type="submit">all list</button></a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="accordion">
+    {{#each restaurantList}}
+    <div class="accordion-item rest-accordion"id="{{name}}">
+      <a>{{name}}</a>
+      <div class="content">
+        <p class="rest-list-address">{{display_address}}</p>
+        <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
+        <p class="rest-list-price-range">{{price}}</p>
+        {{#if tried}}
+        {{else}}
+        <div class="new-label"><strong>new!</strong></div>
+        <form action="/update_tried/{{_id}}" method="post">
+          <button class="tried-btn accordion-btn" type="submit">I tried</button></form>
+        {{/if}}
+        <form action="/delete-result/{{_id}}" method="post">
+          <button class="delete-btn accordion-btn" type="submit">delete</button>
+        </form>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+{{else}}
+<h2>your list is empty!</h2>
+<h3> <a href="/map">add some sh*t to it</a></h3>
+{{/if}}
+{{else}}
+<div class="no-user">
+  <h2>you're not logged in!</h2>
+  <h3><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</h3>
+</div>
+{{/if}}

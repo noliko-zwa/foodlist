@@ -1,0 +1,50 @@
+<div class="main-index">
+  <div class="title-index">
+    <h3 class="title-text">WHAT THE HELL SHOULD I EAT</h3>
+    <p></p>
+  </div>
+  {{#if user}}
+  <div class="section-index">
+    <div class="goToMap">
+      <h2>
+        <a href="/map">CHECK THR MAP</a>
+      </h2>
+    </div>
+    {{else}}
+    <h2>
+      <a href="/auth/signup">SIGN UP</a>
+    </h2>
+    {{/if}}
+    <div class="dish">
+      <div class="fork">
+        <img src="/images/fork.png" alt="fork">
+      </div>
+      <div class="plate">
+
+        <div class="contentPlate">
+          <div class="arrowU"><img src="/images/arrowu.png" alt="arrow"></div>
+          <h2>
+            <div class="swipe">SWIPE</div>
+          </h2>
+          <div class="arrowD"><img src="/images/arrowd.png" alt="arrow"></div>
+
+        </div>
+      </div>
+
+      <div class="knife">
+        <img src="/images/knife.png" alt="knife">
+      </div>
+    </div>
+    <div class="goToList">
+      {{#if user}}
+      <h2>
+        <a href="/list">LIST OF MY FOOD</a>
+      </h2>
+      {{else}}
+      <h2>
+        <a href="/auth/login">LOG IN</a>
+      </h2>
+      {{/if}}
+    </div>
+  </div>
+</div>
